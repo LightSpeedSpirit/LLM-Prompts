@@ -32,7 +32,7 @@ A few habits that show up across this repo:
 
 | Path | What it is |
 |---|---|
-| [`automation-examples/Sale-Finder`](./automation-examples/Sale-Finder) | Multi-store price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list |
+| [`automation-examples/Sale Finder`](./automation-examples/Sale Finder) | Multi-store price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list |
 
 More gets added as things graduate from "personal script" to "pattern
 worth sharing."
