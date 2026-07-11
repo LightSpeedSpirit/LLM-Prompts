@@ -30,9 +30,16 @@ A few habits that show up across this repo:
 
 ## What's here
 
+This repo has three kinds of content, each in its own top-level directory:
+
+- [`automation-examples/`](./automation-examples) — browser/task automation prompts (per-store logins, multi-step site interaction), each with an `/init` fill-in-the-blanks step.
+- [`prompts/`](./prompts) — general-purpose one-shot prompts not tied to browser automation.
+- [`skills/`](./skills) — standalone Claude Skill packages (`SKILL.md` + supporting files), meant to be dropped into `~/.claude/skills/` or a project's `.claude/skills/`.
+
 | Path | What it is |
 |---|---|
 | [`automation-examples/SaleFinder`](./automation-examples/SaleFinder) | Multi-store price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list |
+| [`skills/socratic-tutoring`](./skills/socratic-tutoring) | Socratic tutoring skill — builds understanding via targeted questioning rather than delivering explanations, with self-checks against leading questions |
 
 More gets added as things graduate from "personal script" to "pattern
 worth sharing."
