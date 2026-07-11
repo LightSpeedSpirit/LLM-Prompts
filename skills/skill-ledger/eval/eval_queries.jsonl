@@ -1,0 +1,17 @@
+{"query": "My c++ pointer arithmetic is segfaulting, can you fix this loop for me?", "should_trigger": true}
+{"query": "Am I allowed to have you write this bash script for me?", "should_trigger": true}
+{"query": "What do I need to practice this week?", "should_trigger": true}
+{"query": "Log a rep for bash: while-read loop, I got it working myself, rate it good.", "should_trigger": true}
+{"query": "Can you write the RAII cleanup pattern for this class? (c++ is a registered target area)", "should_trigger": true}
+{"query": "Is c++ pointer arithmetic locked right now?", "should_trigger": true}
+{"query": "Review my ledger and tell me what's due.", "should_trigger": true}
+{"query": "I need this while-read loop finished, deadline's in an hour.", "should_trigger": true}
+{"query": "Mark 'bash: parameter expansion' as practiced, I did it on my own today.", "should_trigger": true}
+{"query": "Turn off the ledger stuff for this session, just answer normally.", "should_trigger": true}
+{"query": "Can you write a Python script to rename these 200 files? Python isn't something I'm trying to learn.", "should_trigger": false}
+{"query": "What's the capital of France?", "should_trigger": false}
+{"query": "Can you explain conceptually how pointers work, no code needed?", "should_trigger": false}
+{"query": "Write the SQL for my homework db assignment, this is just something that needs to get done, not a skill I'm building.", "should_trigger": false}
+{"query": "Can you proofread this cover letter for me?", "should_trigger": false}
+{"query": "Summarize this PDF for my history class.", "should_trigger": false}
+{"query": "What's a good design pattern for a plugin system in general (no specific code, no target area)?", "should_trigger": false}

@@ -40,6 +40,7 @@ This repo has three kinds of content, each in its own top-level directory:
 |---|---|
 | [`automation-examples/SaleFinder`](./automation-examples/SaleFinder) | Multi-store price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list |
 | [`skills/socratic-tutoring`](./skills/socratic-tutoring) | Socratic tutoring skill — builds understanding via targeted questioning rather than delivering explanations, with self-checks against leading questions |
+| [`skills/skill-ledger`](./skills/skill-ledger) | FSRS spaced-repetition ledger deciding when Claude should write code vs. Socratically tutor, so already-demonstrated skills stay "unlocked" and untested ones don't |
 
 More gets added as things graduate from "personal script" to "pattern
 worth sharing."
