@@ -1,6 +1,6 @@
 # Prompt Library
 
-A collection of Claude prompts, skills, and orchestration patterns —
+A collection of prompts, skills, and orchestration patterns for LLMs —
 iterated on in real use rather than written once and left alone.
 
 ## Philosophy
@@ -16,31 +16,34 @@ A few habits that show up across this repo:
 - **Evidence over pre-planning.** Prompts get revised based on what
   actually went wrong in a run, not on anticipating every failure mode
   up front.
-- **Separate the reusable architecture from the tuned instance.** Where a
-  prompt was built around personal specifics (a home store list, a
-  particular course, a particular dataset), what's published here is the
-  general pattern with an explicit fill-in-the-blanks step — not the
-  personal instance with the details clumsily redacted.
+- **Model-agnostic by default.** Most LLMs don't have a "Skills"
+  packaging concept the way Claude does — that mechanism doesn't get to
+  be the axis this repo is organized around.
+- **Separate the reusable architecture from the tuned instance.** Where
+  a project was built around personal specifics (a home store list, a
+  particular learner), what's published here is the general pattern
+  with an explicit fill-in-the-blanks step — not the personal instance
+  with the details clumsily redacted.
 - **ZFC-compliant where it applies.** For orchestrator/subagent work,
   layer separation and explicit scope are treated as correctness
   properties, not style preferences.
-- **Versioned like code.** Prompts carry a last-reviewed date and target
-  model where relevant, because prompt behavior drifts across model
-  versions the same way behavior drifts across library versions.
+- **Versioned like code.** Deliverables carry a last-reviewed date and
+  target model where relevant, because prompt behavior drifts across
+  model versions the same way behavior drifts across library versions.
 
-## What's here
+## Index
 
-This repo has three kinds of content, each in its own top-level directory:
+Every project lives in [`projects/`](./projects), self-contained with its
+own `README.md`, `design/` rationale, and deliverable folder. Shared
+background research lives once in [`references/`](./references) and is
+linked from project `design/` folders rather than duplicated.
 
-- [`automation-examples/`](./automation-examples) — browser/task automation prompts (per-store logins, multi-step site interaction), each with an `/init` fill-in-the-blanks step.
-- [`prompts/`](./prompts) — general-purpose one-shot prompts not tied to browser automation.
-- [`skills/`](./skills) — standalone Claude Skill packages (`SKILL.md` + supporting files), meant to be dropped into `~/.claude/skills/` or a project's `.claude/skills/`.
-
-| Path | What it is |
-|---|---|
-| [`automation-examples/SaleFinder`](./automation-examples/SaleFinder) | Multi-store price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list |
-| [`skills/socratic-tutoring`](./skills/socratic-tutoring) | Socratic tutoring skill — builds understanding via targeted questioning rather than delivering explanations, with self-checks against leading questions |
-| [`skills/skill-ledger`](./skills/skill-ledger) | FSRS spaced-repetition ledger deciding when Claude should write code vs. Socratically tutor, so already-demonstrated skills stay "unlocked" and untested ones don't |
+| Project | What it is | Tags |
+|---|---|---|
+| [`sale-finder`](./projects/sale-finder) | Multi-store grocery price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list | `automation`, `Claude` |
+| [`socratic-tutoring`](./projects/socratic-tutoring) | Claude Skill that tutors via targeted questioning rather than delivered explanations, with a private-prediction self-check against leading questions | `tutoring`, `Claude` |
+| [`skill-ledger`](./projects/skill-ledger) | FSRS spaced-repetition ledger deciding when Claude should write code vs. Socratically tutor, so already-demonstrated skills stay "unlocked" and untested ones don't | `tutoring`, `agent-orchestration`, `Claude` |
+| [`ai-tutor`](./projects/ai-tutor) | Draft 9-skill suite (gatekeeper, diagnosis, hint ladder, worked-example fading, ledger, session write-back) extending the `skill-ledger`/`socratic-tutoring` pattern to a general-purpose tutor — in-progress, not yet shippable standalone | `tutoring`, `agent-orchestration`, `Claude` |
 
 More gets added as things graduate from "personal script" to "pattern
 worth sharing."
@@ -49,19 +52,19 @@ worth sharing."
 
 These are built for and tested against Claude (claude.ai, Claude Code, or
 the API) — several assume tool access like browser automation. Each
-prompt's own README notes what it depends on and what's left for you to
+project's own README notes what it depends on and what's left for you to
 fill in. Nothing here is plug-and-play without at least a little
 adaptation to your own context; that's by design.
 
 ## What's intentionally not here
 
-Prompts tied to specific employers, coursework, or other
-non-public contexts aren't published, regardless of how reusable the
+Content tied to specific employers, coursework, or other
+non-public contexts isn't published, regardless of how reusable the
 underlying technique might be. If a pattern from that kind of work
 becomes generalizable, it gets stripped down and rebuilt as a standalone
-example first — not shared as-is.
+project first — not shared as-is.
 
 ## License
 
-MIT, unless a specific prompt's own README says otherwise. Adapt freely,
+MIT, unless a specific project's own README says otherwise. Adapt freely,
 attribution appreciated but not required.

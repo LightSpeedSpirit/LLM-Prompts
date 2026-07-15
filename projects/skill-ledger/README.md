@@ -6,7 +6,9 @@ Governs whether Claude writes code for a learner outright or tutors them through
 
 Handing someone a finished answer quietly removes the cognitive step (generating, retrieving, debugging) that builds durable skill — and the person offloading it usually can't tell this is happening at the time. This skill is for someone deliberately re-learning to code (or a subset of languages/techniques) who wants Claude to write freely everywhere else, but hold back specifically in the areas they're trying to build, and only once they've actually re-demonstrated a skill recently enough that FSRS predicts high recall.
 
-Full research rationale and the "why" behind every rule lives in `references/policy.md`.
+Full research rationale and the "why" behind every rule lives in [`design/master.md`](./design/master.md) and, at the deliverable level, `skill-ledger/references/policy.md`.
+
+The deliverable lives in [`skill-ledger/`](./skill-ledger) — drop that folder into `~/.claude/skills/` or a project's `.claude/skills/`.
 
 ## What's reusable vs. what to fill in
 
@@ -23,11 +25,8 @@ This is a personal, single-learner pattern — the mechanics (the ledger script,
 ## Dependencies
 
 - Python 3 with the `fsrs` package installed.
-- Pairs with the `socratic-tutoring` skill, which this skill invokes for the actual teaching interaction once a skill is locked — skill-ledger only decides *whether* to write code, not *how* to teach.
+- Pairs with the [`socratic-tutoring`](../socratic-tutoring) skill, which this skill invokes for the actual teaching interaction once a skill is locked — skill-ledger only decides *whether* to write code, not *how* to teach.
 
-## Notes from iterating on this
+## License
 
-- The FSRS unlock design replaced an earlier task-difficulty triage approach that was tried and didn't work — see `references/policy.md`'s intro line.
-- A single successful rep never unlocks a card — at least two recorded reps are required, so one demonstration isn't mistaken for durable skill.
-- The two-ask escalation (recommend once, then comply without resistance) is a deliberate reaction to research showing hard withholding backfires under real deadline pressure — see `references/policy.md` §3.
-- `references/policy.md`'s "Open items" section tracks unresolved tuning questions (FSRS interval lengths, calibration drift in self-graded reps, whether the escalation threshold is right) — worth rechecking after enough real use to have an opinion.
+MIT — adapt freely.
