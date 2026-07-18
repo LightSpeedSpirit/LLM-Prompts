@@ -27,7 +27,7 @@ the part before the colon is the area. Areas must be explicitly registered via
 `areas add` before cards in them are created; this is deliberate. Target-skill
 scope is Ayin's call, made once and persisted here, not re-inferred each session
 from whatever the current conversation happens to be about (full rationale:
-references/policy.md §1).
+../design/master.md §1).
 
 On `stale`: FSRS assumes proactive review (like Anki, which nags you daily
 regardless of whether you happen to need a card that day). This ledger is
@@ -37,7 +37,7 @@ touches a skill again. `due` alone doesn't distinguish "2 days overdue" from
 against a lower floor (default 0.5) and is meant to trigger a single light,
 optional nudge, not a synthetic test. A per-card cooldown (default 3 days,
 `--force` to bypass) keeps it from nagging every session once surfaced. Full
-rationale: references/policy.md §5.
+rationale: ../design/master.md §5.
 
 Tuning: set SKILL_LEDGER_RETENTION to override the default desired-retention
 (0.9) if unlocks feel too easy or cards re-lock absurdly often.

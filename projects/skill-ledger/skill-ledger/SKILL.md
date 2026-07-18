@@ -7,17 +7,17 @@ description: Governs when Claude should write code for the learner versus tutor 
 
 <!-- Last reviewed: 2026-07-11 | Target model: Claude Sonnet | Next review: on FSRS interval tuning or model upgrade -->
 
-This is a personal, single-learner skill: it's tuned around one specific goal, stated below, for whoever is using it. Before relying on it for a new learner, do two things: (1) if you want the prose to address them by name rather than "the learner," swap that in throughout this file and `references/policy.md`; (2) register their actual target-skill areas with `areas add` (see "The one-time setup" below) rather than assuming C++/bash — those are just the examples used throughout this doc.
+This is a personal, single-learner skill: it's tuned around one specific goal, stated below, for whoever is using it. Before relying on it for a new learner, do two things: (1) if you want the prose to address them by name rather than "the learner," swap that in throughout this file; (2) register their actual target-skill areas with `areas add` (see "The one-time setup" below) rather than assuming C++/bash — those are just the examples used throughout this doc.
 
 The learner's goal: they must be able to reproduce, without AI, anything Claude writes for them — this is explicit, not a nice-to-have. If Claude wrote something and the learner couldn't rewrite it unaided, that's the failure state this skill exists to prevent, even if the task got done. They are re-learning to code deliberately (partly in case employers test AI-free coding), and separately want help with other work that doesn't hinder that growth.
 
-Full policy and research backing: `references/policy.md`. Read it on this skill's first trigger in each session; on later triggers in the same session, the summary below suffices. (Known tuning caveats live in policy.md's "Open items.")
+Full policy and research backing: [`../design/master.md`](../design/master.md). Read it on this skill's first trigger in each session; on later triggers in the same session, the summary below suffices. (Known tuning caveats live in master.md's "Open items." Note: this file only exists if `design/` shipped alongside the skill — if it's missing, e.g. after copying only the `skill-ledger/` deliverable folder elsewhere, fall back to the summary below.)
 
 All commands below use `<skill-dir>` for this skill's installed directory — substitute its actual path (e.g. `~/.claude/skills/skill-ledger` or a project's `.claude/skills/skill-ledger`); the working directory resets between shell calls, so relative paths won't work.
 
 ## The one-time setup
 
-Target-skill areas are stored in the ledger itself, under a registry — persisted so target-skill scope isn't re-derived from whatever the current conversation happens to be about (full rationale: policy.md §1).
+Target-skill areas are stored in the ledger itself, under a registry — persisted so target-skill scope isn't re-derived from whatever the current conversation happens to be about (full rationale: master.md §1).
 
 At the start of a session, check the registry, due cards, and stale cards in a single shell call:
 ```
@@ -38,7 +38,7 @@ Ask only when the area prefix isn't in the `areas` output; never re-ask about a 
    ```
    To point at a specific data file, pass `--ledger /path/to/skill-ledger.json` (see "Where the ledger lives" below). If a ledger command errors (`fsrs` not installed, card not found, wrong path), fix the error first — `pip install fsrs --break-system-packages`, `add` the card, correct the path — and state lock/due status only from a command run that actually succeeded.
 3. **If the skill is UNLOCKED: write the code freely, no scaffolding.** A skill with no card counts as unlocked only when its area prefix is not in the `areas` output; a skill in a registered area with no card yet counts as LOCKED (never demonstrated).
-4. **If the skill is LOCKED** (never demonstrated — including no card yet in a registered area — recently failed, or due): don't write the code yet, and don't improvise a hint — invoke the socratic-tutoring skill (Skill tool) before asking the first teaching question. It already encodes the learner's stated teaching preferences; an improvised hint would be a worse, less personalized version. Division of labor: skill-ledger decides *whether* code gets written and owns the two-ask override; socratic-tutoring owns *how* the teaching unfolds. Recommend — once, briefly — that they take the rep instead. If they ask a second time for the same piece of code in the same conversation, end the Socratic process cleanly — mid-question is fine — and write the code, no resistance, no lecture, no guilt-tripping. Stop after that one recommendation: the deadline-pressure research says hard withholding backfires under real friction (full reasoning: policy.md §3).
+4. **If the skill is LOCKED** (never demonstrated — including no card yet in a registered area — recently failed, or due): don't write the code yet, and don't improvise a hint — invoke the socratic-tutoring skill (Skill tool) before asking the first teaching question. It already encodes the learner's stated teaching preferences; an improvised hint would be a worse, less personalized version. Division of labor: skill-ledger decides *whether* code gets written and owns the two-ask override; socratic-tutoring owns *how* the teaching unfolds. Recommend — once, briefly — that they take the rep instead. If they ask a second time for the same piece of code in the same conversation, end the Socratic process cleanly — mid-question is fine — and write the code, no resistance, no lecture, no guilt-tripping. Stop after that one recommendation: the deadline-pressure research says hard withholding backfires under real friction (full reasoning: master.md §3).
 5. Either way, if the code contains atomic skills not yet in the ledger, add them (locked) afterward:
    ```
    python3 <skill-dir>/scripts/skill_ledger.py add "c++: raii cleanup pattern"
@@ -64,7 +64,7 @@ python3 <skill-dir>/scripts/skill_ledger.py due
 Add `--area c++` to scope to one area — but check across all registered areas at least once per session so a due skill in an area you're not actively discussing doesn't get silently skipped. Answer any question about registered areas, lock, due, or stale state from a fresh run of the command — its printed output is the state.
 If a due skill overlaps real work in front of the learner, offer them the chance to do it themselves first — using the actual task, not a made-up exercise. Don't manufacture busywork just to clear a due card.
 
-`stale` catches badly-overdue cards that `due` can't distinguish (rationale: policy.md §5): it flags cards whose predicted retrievability has dropped below a floor (default 0.5), with a per-card cooldown (default 3 days; `--force` bypasses it). For anything flagged, offer one light, optional mention — not a synthetic test. If they take the refresher, run it through socratic-tutoring, same as step 4 above.
+`stale` catches badly-overdue cards that `due` can't distinguish (rationale: master.md §5): it flags cards whose predicted retrievability has dropped below a floor (default 0.5), with a per-card cooldown (default 3 days; `--force` bypasses it). For anything flagged, offer one light, optional mention — not a synthetic test. If they take the refresher, run it through socratic-tutoring, same as step 4 above.
 
 If the learner says they already practiced it somewhere Claude didn't see, take their word for it — ask what rating they'd honestly give and log it via `review` exactly as with any other rep.
 
@@ -80,4 +80,4 @@ The learner can say "skip this," "just answer," or "turn this off" at any point 
 
 ## Open tuning items
 
-policy.md's "Open items" section tracks unresolved design questions (FSRS interval tuning, calibration drift, escalation timing) dated 2026-07-11 — worth a glance if something about the schedule feels off.
+master.md's "Open items" section tracks unresolved design questions (FSRS interval tuning, calibration drift, escalation timing) dated 2026-07-11 — worth a glance if something about the schedule feels off.
