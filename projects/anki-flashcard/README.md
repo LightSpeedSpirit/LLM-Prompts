@@ -1,6 +1,6 @@
 # anki-flashcard
 
-A Claude Skill that generates and reviews Anki flashcards from your notes, with per-card verification against the source material and rules for atomic, retrieval-requiring cards.
+A Claude Skill that generates and reviews Anki flashcards from your notes, with rules for atomic, retrieval-requiring cards. Every card is checked against those rules by a separate judge agent, and a batch pass checks that every fact in the source ended up on a card.
 
 ## What to open
 
@@ -10,8 +10,14 @@ To install it, copy the `skill/` folder into your skills directory **renamed to 
 
 ## Setup
 
-`SKILL.md` has a `source_discovery` section pointing at where the author keeps notes; change it to your own notes location.
+`SKILL.md` is published as the author's working copy, so a few sections describe the author's own setup rather than anything general. Change these before running it on your notes:
+
+- **`source_discovery`**: the skill looks for notes in `~/Documents/School Notes`, expects filenames shaped like `COURSENAME DESCRIPTION DATE.txt` (DATE as MMDDYY), and moves each file into `AI-Carded Notes/` once it's been carded. Point it at your own folder and naming convention. If you drop the course-name prefix, also adjust the deck-picking default in **`autonomy`**, which uses COURSENAME as its main hint. (Step 5 still refers to the done-folder by an older name, `Anki Cards Made/`; treat it as `AI-Carded Notes/`.)
+- **`rendering`**: assumes a dark Anki theme. Change it or remove it to match your card styling.
+- **`content_rules`** (optional): the first two rules handle tutor-chat transcripts (`.jsonl`) and quoted teacher text. They're harmless if your notes contain neither, and you can delete them if they don't fit how you take notes.
+
+Everything else (the content, formatting, dedup, verification, and delegation rules) is meant to be used as-is.
 
 ## Design rationale
 
-Not yet published. The design docs for this project cite research that isn't included in this repo (see the [root README](../../README.md#why-research-isnt-published)), so they're being rewritten as a standalone `design/master.md` before they go public.
+See [`design/master.md`](./design/master.md): the architecture, which rules come from observed failures and which are judgment or preference, and the known open problems.
