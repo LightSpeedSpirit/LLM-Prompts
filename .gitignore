@@ -19,3 +19,17 @@ research/
 .cursor/
 .claude/
 AGENTS.md
+
+# anki-flashcard: private working material (research outputs, transcripts, agent config)
+projects/anki-flashcard/field-notes/
+projects/anki-flashcard/deliberation-report-*.md
+projects/anki-flashcard/card_source/
+projects/anki-flashcard/context/
+projects/anki-flashcard/dist/
+projects/anki-flashcard/AGENTS.md
+# anki-flashcard: internal design docs cite unpublished research; publish only after rewriting (see projects/anki-flashcard/README.md)
+projects/anki-flashcard/CLAUDE.md
+projects/anki-flashcard/.gitignore
+projects/anki-flashcard/design/
+projects/anki-flashcard/repo-management/
+projects/anki-flashcard/skill/backups/

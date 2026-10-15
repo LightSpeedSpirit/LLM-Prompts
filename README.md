@@ -41,6 +41,7 @@ linked from project `design/` folders rather than duplicated.
 | Project | What it is | Tags |
 |---|---|---|
 | [`sale-finder`](./projects/sale-finder) | Multi-store grocery price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list | `automation`, `Claude` |
+| [`anki-flashcard`](./projects/anki-flashcard) | Skill that generates and reviews Anki flashcards from notes: atomic, retrieval-requiring cards, each verified against its source passage; with- and without-MCP modes | `flashcards`, `Claude` |
 | [`evidence-gate-kit`](./projects/evidence-gate-kit) | Port-into-your-repo structure that makes an AI refuse prompt changes contradicting the evidence behind them: tiered justifications (research > incident > judgment), decision/lesson ledger, eval-coverage link, commit-to-issue traceability | `agent-orchestration`, `prompt-maintenance`, `any` |
 
 More gets added as things graduate from "personal script" to "pattern
