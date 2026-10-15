@@ -1,3 +1,21 @@
 .DS_Store
 ai-tutor/
 projects/ai-tutor/
+
+# Proprietary research corpus: never published (see README)
+research/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
+
+# Local beads db + agent-tool config (private; decisions cite unpublished research)
+.beads/
+.agents/
+.codex/
+.cursor/
+.claude/
+AGENTS.md

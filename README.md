@@ -24,7 +24,7 @@ A few habits that show up across this repo:
   particular learner), what's published here is the general pattern
   with an explicit fill-in-the-blanks step — not the personal instance
   with the details clumsily redacted.
-- **ZFC-compliant where it applies.** For orchestrator/subagent work,
+- **Layer separation where it applies.** For orchestrator/subagent work,
   layer separation and explicit scope are treated as correctness
   properties, not style preferences.
 - **Versioned like code.** Deliverables carry a last-reviewed date and
@@ -35,7 +35,7 @@ A few habits that show up across this repo:
 
 Every project lives in [`projects/`](./projects), self-contained with its
 own `README.md`, `design/` rationale, and deliverable folder. Shared
-background research lives once in [`references/`](./references) and is
+background material lives once in [`references/`](./references) and is
 linked from project `design/` folders rather than duplicated.
 
 | Project | What it is | Tags |
@@ -73,6 +73,21 @@ non-public contexts isn't published, regardless of how reusable the
 underlying technique might be. If a pattern from that kind of work
 becomes generalizable, it gets stripped down and rebuilt as a standalone
 project first — not shared as-is.
+
+## Why `research/` isn't published
+
+Several projects here were built against a `research/` corpus: verbatim
+source captures, claim ledgers, and derived briefs. That corpus is
+produced by a proprietary research tool that doesn't hallucinate
+citations, and publishing the corpus would give away integral parts of
+how the tool works. So **no folder in this repo includes `research/`**,
+and it's excluded via `.gitignore`.
+
+What that means for you as a reader: where a project's `design/` docs or
+a deliverable cite a research doc or claim tag (e.g. `[C1.1]`), the
+source behind it isn't included here. The design rationale is still
+written out in `design/`; it just can't be traced all the way down to
+the underlying captures in this repo.
 
 ## License
 
