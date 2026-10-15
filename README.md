@@ -41,9 +41,6 @@ linked from project `design/` folders rather than duplicated.
 | Project | What it is | Tags |
 |---|---|---|
 | [`sale-finder`](./projects/sale-finder) | Multi-store grocery price comparison via browser automation: per-unit normalization, cross-store value flagging, and an `/init` step for plugging in your own store list | `automation`, `Claude` |
-| [`socratic-tutoring`](./projects/socratic-tutoring) | Claude Skill that tutors via targeted questioning rather than delivered explanations, with a private-prediction self-check against leading questions | `tutoring`, `Claude` |
-| [`skill-ledger`](./projects/skill-ledger) | FSRS spaced-repetition ledger deciding when Claude should write code vs. Socratically tutor, so already-demonstrated skills stay "unlocked" and untested ones don't | `tutoring`, `agent-orchestration`, `Claude` |
-| [`ai-tutor`](./projects/ai-tutor) | Draft 9-skill suite (gatekeeper, diagnosis, hint ladder, worked-example fading, ledger, session write-back) extending the `skill-ledger`/`socratic-tutoring` pattern to a general-purpose tutor — in-progress, not yet shippable standalone | `tutoring`, `agent-orchestration`, `Claude` |
 
 More gets added as things graduate from "personal script" to "pattern
 worth sharing."
@@ -55,6 +52,19 @@ the API) — several assume tool access like browser automation. Each
 project's own README notes what it depends on and what's left for you to
 fill in. Nothing here is plug-and-play without at least a little
 adaptation to your own context; that's by design.
+
+## Retired and withheld
+
+- **`socratic-tutoring` and `skill-ledger` (retired).** Early tutoring
+  prompts that I removed because they've been overtaken by publicly
+  available ones, including Anthropic's own tutoring skill. They were
+  written against older model behavior and are no longer worth the
+  maintenance or the shelf space. Their git history is still here if
+  you're curious.
+- **`ai-tutor` (withheld).** The tutor suite that grew out of those two
+  goes further than the public tutoring skills I've compared it
+  against. I think what I've built is better, and I'm trying to sell
+  it, so it isn't published here.
 
 ## What's intentionally not here
 
