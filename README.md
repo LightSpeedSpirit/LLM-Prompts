@@ -65,8 +65,10 @@ adaptation to your own context; that's by design.
   you're curious.
 - **`ai-tutor` (withheld).** The tutor suite that grew out of those two
   goes further than the public tutoring skills I've compared it
-  against. I think what I've built is better, and I'm trying to sell
-  it, so it isn't published here.
+  against. Claude's tutor skill drags the student through every step
+  they already know and doesn't scaffold anything. I think what I've
+  built is better, and I'm trying to sell it, so it isn't published
+  here.
 
 ## What's intentionally not here
 
